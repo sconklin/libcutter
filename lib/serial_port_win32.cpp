@@ -120,7 +120,7 @@ size_t serial_port::p_write( const uint8_t * data, size_t size )
 
     for( i = 0; i < size; ++i )
     {
-	delay(1000);
+        delay(1000);
 
         if( WriteFile( fd, data, 1, &bytesWritten, NULL ) )
         {

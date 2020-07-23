@@ -31,9 +31,9 @@ struct xy
 {
     double x;
     double y;
-	xy(){};
-	xy(double _x, double _y){x=_x;y=_y;};
-	~xy(){};
+    xy(){};
+    xy(double _x, double _y){x=_x;y=_y;};
+    ~xy(){};
 };
 
 typedef uint32_t ckey_type[4];

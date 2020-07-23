@@ -126,8 +126,11 @@ namespace Device
 
         l.bytes  =13;
         l.cmd    = 0x40;
+                                 // data bytes are all 32 bits
         l.data[0]=htocl( get_rand() );
+                                 // in Cutter units (double)
         l.data[1]=htocl( ptbuffer.y );
+                                 //
         l.data[2]=htocl( ptbuffer.x );
         btea(l.data, 3, k );
 
@@ -165,16 +168,16 @@ else assert
 ******************************************/
 static inline uint32_t htocl( const uint32_t input )
 {
-#if defined(  _BIG_ENDIAN )
-return ( ( input & 0x000000FF ) << 24 ) |
-       ( ( input & 0x0000FF00 ) << 8  ) |
-       ( ( input & 0x00FF0000 ) >> 8  ) |
-       ( ( input & 0xFF000000 ) >> 24 ) ;
-#elif defined( _MIDDLE_ENDIAN ) || defined( _PDP_ENDIAN )
-return ( ( input & 0x0000FFFF ) << 16 ) |
-       ( ( input & 0xFFFF0000 ) >> 16 ) ;
-#else
-//Assume little endian
-return input;
-#endif
+    #if defined(  _BIG_ENDIAN )
+    return ( ( input & 0x000000FF ) << 24 ) |
+        ( ( input & 0x0000FF00 ) << 8  ) |
+        ( ( input & 0x00FF0000 ) >> 8  ) |
+        ( ( input & 0xFF000000 ) >> 24 ) ;
+    #elif defined( _MIDDLE_ENDIAN ) || defined( _PDP_ENDIAN )
+    return ( ( input & 0x0000FFFF ) << 16 ) |
+        ( ( input & 0xFFFF0000 ) >> 16 ) ;
+    #else
+    //Assume little endian
+    return input;
+    #endif
 }

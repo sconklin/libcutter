@@ -760,7 +760,6 @@ int main(int numArgs, char * args[] )
     ckey_type curve_key={CURVE_KEY_0, CURVE_KEY_1, CURVE_KEY_2, CURVE_KEY_3 };
     c.set_curve_key(curve_key);
 
-
     svg_render_state_t state(c);
 
     //For debugging
